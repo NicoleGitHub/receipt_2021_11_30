@@ -31,20 +31,20 @@ public class PosMachine {
         return distinctBarcodeWithQuantity;
     }
 
-//    public String generateReceiptList(List<Pair<String, Integer>> barcodes) {
-//
-//        String receiptList = "***<store earning no money>Receipt***\n";
-//
-//        for(Pair<String, Integer> barcode: barcodes) {
-//            receiptList += generateReceiptLine(barcode);
-//        }
-//
-//        receiptList += "----------------------\n" +
-//                "Total: 24 (yuan)\n" +
-//                "**********************";
-//
-//        return receiptList;
-//    }
+    public String generateReceiptList(List<Pair<String, Integer>> barcodes) {
+
+        String receiptList = "***<store earning no money>Receipt***\n";
+
+        for(Pair<String, Integer> barcode: barcodes) {
+            receiptList += generateReceiptLine(barcode);
+        }
+
+        receiptList += "----------------------\n" +
+                "Total: 24 (yuan)\n" +
+                "**********************";
+
+        return receiptList;
+    }
 //
 //    public String generateReceiptLine(Pair<String, Integer> barcodeQuantityPair) {
 //
