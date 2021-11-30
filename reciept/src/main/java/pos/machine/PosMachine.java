@@ -45,21 +45,21 @@ public class PosMachine {
 
         return receiptList;
     }
-//
-//    public String generateReceiptLine(Pair<String, Integer> barcodeQuantityPair) {
-//
-//        ItemInfo itemInfo = findItemBarCodeFromDB(barcodeQuantityPair.fst);
-//
-//        return "Name: "+
-//                itemInfo.getName()+
-//                ", Quantity: "+
-//                barcodeQuantityPair.snd+
-//                ", Unit price: "+
-//                itemInfo.getPrice() +
-//                " (yuan), Subtotal: "+ calculateSubtotal(itemInfo, barcodeQuantityPair.snd) +
-//                " (yuan)\n";
-//    }
-//
+
+    public String generateReceiptLine(Pair<String, Integer> barcodeQuantityPair) {
+
+        ItemInfo itemInfo = findItemBarCodeFromDB(barcodeQuantityPair.fst);
+
+        return "Name: "+
+                itemInfo.getName()+
+                ", Quantity: "+
+                barcodeQuantityPair.snd+
+                ", Unit price: "+
+                itemInfo.getPrice() +
+                " (yuan), Subtotal: "+ calculateSubtotal(itemInfo, barcodeQuantityPair.snd) +
+                " (yuan)\n";
+    }
+
 //    public ItemInfo findItemBarCodeFromDB(String barcode) {
 //        List<ItemInfo> database = ItemDataLoader.loadAllItemInfos();
 //
