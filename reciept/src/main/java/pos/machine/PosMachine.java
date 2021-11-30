@@ -10,8 +10,7 @@ import java.util.stream.Collectors;
 public class PosMachine {
 
     public String printReceipt(List<String> barcodes) {
-//        return generateReceiptList(getBarcodeQuantity(barcodes));
-        return null;
+        return generateReceiptList(getBarcodeQuantity(barcodes));
     }
 
 //    public List<Pair<String, Integer>> getBarcodeQuantity(List<String> barcodes) {
