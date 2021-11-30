@@ -60,21 +60,21 @@ public class PosMachine {
                 " (yuan)\n";
     }
 
-//    public ItemInfo findItemBarCodeFromDB(String barcode) {
-//        List<ItemInfo> database = ItemDataLoader.loadAllItemInfos();
-//
-//        for(ItemInfo itemInfo : database) {
-//            if(itemInfo.getBarcode().equals(barcode)) {
-//                return itemInfo;
-//            }
-//        }
-//
-//        return null;
-//    }
-//
-//    public int calculateSubtotal(ItemInfo item, int unit) {
-//        return item.getPrice()*unit;
-//    }
+    public ItemInfo findItemBarCodeFromDB(String barcode) {
+        List<ItemInfo> database = ItemDataLoader.loadAllItemInfos();
+
+        for(ItemInfo itemInfo : database) {
+            if(itemInfo.getBarcode().equals(barcode)) {
+                return itemInfo;
+            }
+        }
+
+        return null;
+    }
+
+    public int calculateSubtotal(ItemInfo item, int unit) {
+        return item.getPrice()*unit;
+    }
 
 
 
