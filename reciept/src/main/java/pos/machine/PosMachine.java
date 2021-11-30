@@ -13,24 +13,24 @@ public class PosMachine {
         return generateReceiptList(getBarcodeQuantity(barcodes));
     }
 
-//    public List<Pair<String, Integer>> getBarcodeQuantity(List<String> barcodes) {
-//        List<String> distinctBarcodes = barcodes.stream().distinct().collect(Collectors.toList());
-//        List<Pair<String, Integer>> distinctBarcodeWithQuantity = new ArrayList<>();
-//
-//        for(String distinctBarcode: distinctBarcodes) {
-//            Integer countBarcode = 0;
-//            for(String barcode: barcodes) {
-//                if(distinctBarcode.equals(barcode)) {
-//                    countBarcode++;
-//                }
-//            }
-//            Pair<String, Integer> pair = new Pair<>(distinctBarcode, countBarcode);
-//            distinctBarcodeWithQuantity.add(pair);
-//        }
-//
-//        return distinctBarcodeWithQuantity;
-//    }
-//
+    public List<Pair<String, Integer>> getBarcodeQuantity(List<String> barcodes) {
+        List<String> distinctBarcodes = barcodes.stream().distinct().collect(Collectors.toList());
+        List<Pair<String, Integer>> distinctBarcodeWithQuantity = new ArrayList<>();
+
+        for(String distinctBarcode: distinctBarcodes) {
+            Integer countBarcode = 0;
+            for(String barcode: barcodes) {
+                if(distinctBarcode.equals(barcode)) {
+                    countBarcode++;
+                }
+            }
+            Pair<String, Integer> pair = new Pair<>(distinctBarcode, countBarcode);
+            distinctBarcodeWithQuantity.add(pair);
+        }
+
+        return distinctBarcodeWithQuantity;
+    }
+
 //    public String generateReceiptList(List<Pair<String, Integer>> barcodes) {
 //
 //        String receiptList = "***<store earning no money>Receipt***\n";
