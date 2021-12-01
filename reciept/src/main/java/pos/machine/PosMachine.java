@@ -1,6 +1,5 @@
 package pos.machine;
 
-
 import com.sun.tools.javac.util.Pair;
 
 import java.util.ArrayList;
@@ -10,7 +9,7 @@ import java.util.stream.Collectors;
 public class PosMachine {
 
     public String printReceipt(List<String> barcodes) {
-        return generateReceiptList(getBarcodeQuantity(barcodes));
+        return generateReceiptListWithTotal(getBarcodeQuantity(barcodes));
     }
 
     public List<Pair<String, Integer>> getBarcodeQuantity(List<String> barcodes) {
@@ -31,33 +30,42 @@ public class PosMachine {
         return distinctBarcodeWithQuantity;
     }
 
-    public String generateReceiptList(List<Pair<String, Integer>> barcodes) {
+    public String generateReceiptListWithTotal(List<Pair<String, Integer>> barcodes) {
 
         String receiptList = "***<store earning no money>Receipt***\n";
+        Integer total = 0;
 
         for(Pair<String, Integer> barcode: barcodes) {
-            receiptList += generateReceiptLine(barcode);
+            Pair<String, Integer> receiptLineTotalPair = generateReceiptLine(barcode);
+            receiptList += receiptLineTotalPair.fst;
+            total += receiptLineTotalPair.snd;
         }
 
         receiptList += "----------------------\n" +
-                "Total: 24 (yuan)\n" +
+                "Total: "+
+                total+
+                " (yuan)\n" +
                 "**********************";
 
         return receiptList;
     }
 
-    public String generateReceiptLine(Pair<String, Integer> barcodeQuantityPair) {
+    public Pair<String, Integer> generateReceiptLine(Pair<String, Integer> barcodeQuantityPair) {
 
         ItemInfo itemInfo = findItemBarCodeFromDB(barcodeQuantityPair.fst);
+        Integer subTotal = calculateSubtotal(itemInfo, barcodeQuantityPair.snd);
 
-        return "Name: "+
+        Pair<String, Integer> receiptLineTotalPair = new Pair<>("Name: "+
                 itemInfo.getName()+
                 ", Quantity: "+
                 barcodeQuantityPair.snd+
                 ", Unit price: "+
                 itemInfo.getPrice() +
-                " (yuan), Subtotal: "+ calculateSubtotal(itemInfo, barcodeQuantityPair.snd) +
-                " (yuan)\n";
+                " (yuan), Subtotal: "+
+                subTotal +
+                " (yuan)\n", subTotal);
+
+        return receiptLineTotalPair;
     }
 
     public ItemInfo findItemBarCodeFromDB(String barcode) {
